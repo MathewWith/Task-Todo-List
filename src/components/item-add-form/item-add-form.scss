@@ -1,0 +1,24 @@
+.item-add-form {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 60%;
+  margin-top: 10px;
+  margin-left: 64px;
+  .item-add-form__input {
+    width: 90%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 2px 10px;
+    border: 1px solid silver;
+    outline: none;
+  }
+  .btn-input {
+    width: 7%;
+    background-color: rgb(114, 60, 150);
+    border: 1px solid silver;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+    border-radius: 10px;
+  }
+}

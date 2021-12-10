@@ -1,0 +1,25 @@
+.todo-list-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .label {
+    display: inline-block;
+    font-family: Open Sans;
+    font-size: 20px;
+  }
+  .btn-grope {
+    display: flex;
+    align-items: center;
+  }
+  .btn-delete {
+    font-size: 18px;
+    margin: 0px 5px;
+    cursor: pointer;
+  }
+  .btn-edit {
+    font-size: 18px;
+    margin: 0px 5px;
+    cursor: pointer;
+  }
+}

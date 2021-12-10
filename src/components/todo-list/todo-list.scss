@@ -1,0 +1,25 @@
+.todo-list {
+  max-width: 60%;
+  margin-top: 50px;
+  padding: 5px 10px;
+  margin-left: 54px;
+  position: relative;
+  .list-group-item {
+    text-decoration: none;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border: 1px solid silver;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 16px 12px;
+  }
+  .todo-total {
+    font-weight: bold;
+    position: absolute;
+    left: 16px;
+    top: -20px;
+  }
+}
