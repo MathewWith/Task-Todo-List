@@ -1,25 +1,101 @@
+// .todo-list {
+//   max-width: 60%;
+//   margin-top: 50px;
+//   padding: 5px 10px;
+//   position: relative;
+//   float: left;
+//   justify-content: left;
+//   .list-group-item {
+//     text-decoration: none;
+//     box-sizing: border-box;
+//     display: flex;
+//     width: 100%;
+//     list-style-type: none;
+//     justify-content: space-between;
+//     border: 1px solid silver;
+//     margin-bottom: 5px;
+//     border-radius: 10px;
+//     padding: 16px 12px;
+//   }
+//   .todo-total {
+//     font-weight: bold;
+//     position: absolute;
+//     left: 16px;
+//     top: -20px;
+//   }
+// }
+
+// .todo-list-done {
+//   max-width: 30%;
+//   padding: 5px 10px;
+//   position: relative;
+//   list-style-type: none;
+//   .list-group-item {
+//     text-decoration: none;
+//     box-sizing: border-box;
+//     display: flex;
+//     width: 100%;
+//     list-style-type: none;
+//     border: 1px solid silver;
+//     margin-bottom: 5px;
+//     border-radius: 10px;
+//     padding: 16px 12px;
+//   }
+//   .todo-total {
+//     font-weight: bold;
+//     position: absolute;
+//     left: 16px;
+//     top: -20px;
+//   }
+// }
+
 .todo-list {
-  max-width: 60%;
-  margin-top: 50px;
-  padding: 5px 10px;
-  margin-left: 54px;
+  float: left;
+  width: 57%;
+  margin-left: 64px;
+  margin-top: 120px;
   position: relative;
   .list-group-item {
-    text-decoration: none;
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
     border: 1px solid silver;
-    margin-bottom: 5px;
     border-radius: 10px;
-    font-size: 14px;
-    padding: 16px 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    position: relative;
+    width: 100%;
+    height: 35px;
   }
   .todo-total {
-    font-weight: bold;
     position: absolute;
-    left: 16px;
-    top: -20px;
+    top: -25px;
+    left: 0;
+    font-weight: bold;
+    line-height: 22px;
+    height: 22px;
+  }
+}
+
+.todo-list-done {
+  width: 30%;
+  margin-left: 65%;
+  position: relative;
+  .list-group-item {
+    list-style-type: none;
+    border: 1px solid silver;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    position: relative;
+    width: 100%;
+    height: 35px;
+  }
+  .todo-total {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-weight: bold;
   }
 }

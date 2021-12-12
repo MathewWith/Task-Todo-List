@@ -1,12 +1,17 @@
 .todo-list-item {
   display: flex;
   width: 100%;
+  top: 0;
   justify-content: space-between;
-  align-items: center;
-  .label {
-    display: inline-block;
+  .wrapper-title::first-letter {
+    text-transform: capitalize;
+  }
+  .title {
     font-family: Open Sans;
     font-size: 20px;
+  }
+  .title:first-letter {
+    text-transform: capitalize;
   }
   .btn-grope {
     display: flex;

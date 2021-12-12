@@ -3,10 +3,17 @@ import './App.scss';
 import AppHeader from './components/app-header';
 import ItemAddForm from './components/item-add-form';
 import TodoList from './components/todo-list';
-// setTodos(JSON.parse(json)
+
+
 const App = () => {
   let maxId = 200;
   let userId = 10;
+
+  
+
+  const getTodos = (isCompleted) => {
+    return todos.filter(todo => todo.completed === isCompleted)
+  }
 
   useEffect(() => response(), [])
 
@@ -45,14 +52,18 @@ const App = () => {
   return (
         <div className="App">
           <AppHeader />
-          <ItemAddForm onClick={setNewTodo}/>
-          <TodoList todos={todos} 
+          <ItemAddForm onClick={setNewTodo} todos={todos}/>
+          <TodoList todos={getTodos(false)}
                     deleteItem={deleteItem}
-                    editable={true||false}
-                    className=""/>
+                    editable={false}// completed
+                    className="todo-list"/>
+          <TodoList todos={getTodos(true)}
+                    deleteItem={deleteItem}
+                    editable={true}// completed
+                    className="todo-list-done"/>
         </div>
       );
-
+//sidNuw(боковая панель), туду лист, туду-лист-айтем, хедр, апп
 
 
 

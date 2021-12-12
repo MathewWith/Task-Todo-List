@@ -8,7 +8,7 @@ export const AppHeader = () => {
             <div className="right">
                 <span className="">Tasks</span>
             </div>
-            <div className="left-panel">h</div>
+            <div className="left-panel"><img src="../todo-list-item/image/Vector.png"/><label /></div>
         </div>
     )
 }

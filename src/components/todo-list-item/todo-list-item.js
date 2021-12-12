@@ -5,7 +5,8 @@ export const TodoListItem = ({item, id, deleteItem, saveIndexForEdit}) => {
     const className = "todo-list-item"
     return (
         <span className={className}>
-            <span className="label">{item}</span>
+                {/* <input type="checkbox" /> */}
+                <span className="title">{item}</span>
             <div className="btn-grope">
               <img src="image/edit.png" className="image"/>
               <RiFileEditLine className="btn-edit" onClick={() => saveIndexForEdit(id)}/>

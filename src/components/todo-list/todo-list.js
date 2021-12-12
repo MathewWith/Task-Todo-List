@@ -1,20 +1,49 @@
 import React from "react";
 import TodoListItem from "../todo-list-item";
-import TodoListItemDone from "../todo-list-item-done";
 
-export const TodoList = ({todos, deleteItem, saveIndexForEdit}) => {
+export const TodoList = ({todos, editable, deleteItem}) => {
 
-    const elementDone = todos.map((item) => {
-        return (
-            <li key={item.id}>
-                <TodoListItemDone 
-                    title={item.title}
-                    id={item.id}
-                    deleteItem={deleteItem}
-                />
-            </li>
-        )
-    })
+    const classes = editable ? "todo-list-done" : "todo-list"; 
+  
+    // const elementDone = (item) => {
+    //     return (
+    //         <li className="list-group-item" key={item.id}>
+    //             <TodoListItemDone 
+    //                 item={item.title}
+    //                 id={item.id}
+    //                 deleteItem={deleteItem}
+    //             />
+    //         </li>
+    //     )
+    // }
+
+    // const element = (item) => {
+    //     return(
+    //         <li className="list-group-item" key={item.id}>
+    //             <TodoListItem 
+    //                 item={item.title} 
+    //                 id={item.id} 
+    //                 key={item.id} 
+    //                 deleteItem={deleteItem}
+    //                 completed={item.completed}
+    //                 // saveIndexForEdit={saveIndexForEdit}
+    //                 /> 
+    //         </li>
+    //     )
+    // }
+
+
+    // const elementDone1 = todos.map((item) => {
+    //     return (
+    //         <li key={item.id}>
+    //             <TodoListItemDone 
+    //                 title={item.title}
+    //                 id={item.id}
+    //                 deleteItem={deleteItem}
+    //             />
+    //         </li>
+    //     )
+    // })
 
    
     const element = todos.map((item) => {
@@ -25,6 +54,7 @@ export const TodoList = ({todos, deleteItem, saveIndexForEdit}) => {
                     id={item.id} 
                     key={item.id} 
                     deleteItem={deleteItem}
+                    completed={item.completed}
                     // saveIndexForEdit={saveIndexForEdit}
                     /> 
             </li>
@@ -32,10 +62,10 @@ export const TodoList = ({todos, deleteItem, saveIndexForEdit}) => {
     })
 
     return (
-            <ul className="todo-list">
+            <ul className={classes}>
             <span className="todo-total">To do({todos.length})</span>
                 {
-                     element
+                element
                 }
             </ul>
     )

@@ -4,6 +4,9 @@ export class ItemAddForm extends Component {
     state = {
         label: ""
     }
+     todoTotalOnList = (todos) => {
+        return todos.length
+      }
 
     setItem = (e) => {
         this.setState({
@@ -32,6 +35,7 @@ export class ItemAddForm extends Component {
                     onChange={this.setItem}
                     />
                 <button className="btn-input">Add</button>
+                <span className="todo-total-on-list">Total: {this.todoTotalOnList(this.props.todos)}</span>
             </form>
         )
     }
