@@ -1,7 +1,7 @@
 import React from "react";
 import TodoListItem from "../todo-list-item";
 
-export const TodoList = ({todos, editable, deleteItem}) => {
+export const TodoList = ({todos, editable, deleteItem, updateItem}) => {
 
     const classes = editable ? "todo-list-done" : "todo-list"; 
   
@@ -48,14 +48,13 @@ export const TodoList = ({todos, editable, deleteItem}) => {
    
     const element = todos.map((item) => {
         return(
-            <li className="list-group-item" key={todos.id}>
+            <li className="list-group-item" key={item.id}>
                 <TodoListItem 
-                    item={item.title} 
-                    id={item.id} 
-                    key={item.id} 
+                    item={item}
+                    title={item.title} 
                     deleteItem={deleteItem}
                     completed={item.completed}
-                    // saveIndexForEdit={saveIndexForEdit}
+                    updateItem={updateItem}
                     /> 
             </li>
         )
@@ -63,7 +62,9 @@ export const TodoList = ({todos, editable, deleteItem}) => {
 
     return (
             <ul className={classes}>
-            <span className="todo-total">To do({todos.length})</span>
+                { editable 
+                ? <span className="todo-total">Completed({todos.length})</span>
+                : <span className="todo-total">To do({todos.length})</span>}
                 {
                 element
                 }

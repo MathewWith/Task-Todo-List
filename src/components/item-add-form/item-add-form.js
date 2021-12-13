@@ -1,43 +1,30 @@
-import React, { Component} from "react";
+import React, {useState} from "react";
 
-export class ItemAddForm extends Component {
-    state = {
-        label: ""
-    }
-     todoTotalOnList = (todos) => {
+export const ItemAddForm = ({todos, onClick}) => {
+    const [label, setLabel] = useState("")
+
+    const todoTotalOnList = (todos) => {
         return todos.length
       }
 
-    setItem = (e) => {
-        this.setState({
-            label: e.target.value
-        })
-    }
-
-    onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        this.props.onClick(this.state.label)
-        this.setState({
-            label: ""
-        })
+        await onClick(label)
+        setLabel('')
     }
-
-    render() {
     
         return (
             <form className="item-add-form"
-                onSubmit={this.onSubmit}>
+                onSubmit={onSubmit}>
                 <input 
                     type="text"
                     className="item-add-form__input"  
-                    placeholder="Write here"
-                    value={this.state.label}
-                    onChange={this.setItem}
+                    placeholder="+ Add a task, press Enter to save"
+                    value={label}
+                    onChange={(e) => setLabel(e.target.value)}
                     />
                 <button className="btn-input">Add</button>
-                <span className="todo-total-on-list">Total: {this.todoTotalOnList(this.props.todos)}</span>
+                <span className="todo-total-on-list">Total: {todoTotalOnList(todos)}</span>
             </form>
         )
-    }
-    
 }

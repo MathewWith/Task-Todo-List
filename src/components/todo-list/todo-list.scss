@@ -57,7 +57,7 @@
   position: relative;
   .list-group-item {
     border: 1px solid silver;
-    border-radius: 10px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -68,7 +68,7 @@
   }
   .todo-total {
     position: absolute;
-    top: -25px;
+    top: -27px;
     left: 0;
     font-weight: bold;
     line-height: 22px;
@@ -81,11 +81,13 @@
   margin-left: 65%;
   position: relative;
   .list-group-item {
+    color: #a3a3a3;
     list-style-type: none;
     border: 1px solid silver;
-    border-radius: 10px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
+    text-decoration: line-through;
     margin-bottom: 10px;
     padding: 5px 10px;
     position: relative;
@@ -94,7 +96,7 @@
   }
   .todo-total {
     position: absolute;
-    top: -25px;
+    top: -27px;
     left: 0;
     font-weight: bold;
   }

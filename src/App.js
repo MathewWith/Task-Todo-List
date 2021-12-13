@@ -1,49 +1,80 @@
-import {useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import './App.scss';
 import AppHeader from './components/app-header';
 import ItemAddForm from './components/item-add-form';
 import TodoList from './components/todo-list';
+import {URL} from './shared/const';
 
 
 const App = () => {
-  let maxId = 200;
-  let userId = 10;
 
+  useEffect(() => loadData(), []);
+
+  const [todos, setTodos] = useState([])
+
+
+  const updateItem = async (item) => {
+    try {
+      await fetch(`${URL}/${item.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(item),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      const itemToUpdate = todos.find(todo => todo.id === item.id)
+      itemToUpdate.completed = true
+      setTodos([...todos])
+    } catch(err) {
+      console.log(err);
+    }
+  }
+  
   
 
   const getTodos = (isCompleted) => {
     return todos.filter(todo => todo.completed === isCompleted)
   }
 
-  useEffect(() => response(), [])
 
-  const [todos, setTodos] = useState([])
-
-  const createTodoItem = (title) => {
-      return {
+  const createTodoItem = async (title) => {
+    const response = await fetch(`${URL}`, {
+      method: 'POST',
+      body: JSON.stringify({
         title,
         completed: false,
-        id: maxId++,
-        userId: userId++
-      }
+        userId: 1,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    return response.json()
     }
 
-  const response = () => {
-  fetch('https://jsonplaceholder.typicode.com/todos')
-  .then((response) => response.json())
-  .then((json) => setTodos(json))}
+  const loadData = async () => {
+  try {
+    const data = await fetch(`${URL}`)
+    const data2 = await data.json()
+    setTodos(data2)
+  } catch(err) {
+    console.log(err);
+    }  
+  }
 
-  const deleteItem = (id) => {
-    const idx = todos.findIndex((el) => el.id === id)
-        const newArray = [
-          ...todos.slice(0, idx),
-          ...todos.slice(idx + 1)
-        ]
-        setTodos(newArray)
-    } 
+  const deleteItem = async (id) => {
+    try {
+      await fetch(`${URL}/${id}`, {
+        method: 'DELETE',
+      });
+      setTodos(todos.filter(todo => todo.id !== id))
+    } catch(err) {
+      console.log(err);
+    }
+  } 
 
-  const  setNewTodo = (value) => {
-    const newItem = createTodoItem(value)
+  const  setNewTodo = async (value) => {
+    const newItem = await createTodoItem(value)
     const newArray = [...todos, newItem]
     setTodos(newArray)
   }
@@ -55,92 +86,17 @@ const App = () => {
           <ItemAddForm onClick={setNewTodo} todos={todos}/>
           <TodoList todos={getTodos(false)}
                     deleteItem={deleteItem}
-                    editable={false}// completed
+                    updateItem={updateItem}
+                    editable={false}
                     className="todo-list"/>
           <TodoList todos={getTodos(true)}
+                    updateItem={updateItem}
                     deleteItem={deleteItem}
-                    editable={true}// completed
+                    editable={true}
                     className="todo-list-done"/>
         </div>
       );
-//sidNuw(боковая панель), туду лист, туду-лист-айтем, хедр, апп
-
-
-
-
-
-
-
-
-
-
-
-  // maxId = 100;
-  // state = {
-  //   todoData : [
-  //     this.createTodoItem("Have a breakfast"),
-  //     this.createTodoItem("Drink Coffee"),
-  //     this.createTodoItem("Make Awesome App"),
-  //     this.createTodoItem("Have a lunch")
-  //   ]
-  // }
-
-  // indexForEdit = null;
-
-  // createTodoItem(label) {
-  //   return {
-  //     label,
-  //     id: this.maxId++
-  //   }
-  // }
-
-  // saveIndexForEdit = (idx) => {
-  //   this.indexForEdit = idx;
-  // }
-
-  // deleteItem = (id) => {
-  //   this.setState(({todoData}) => {
-  //     const idx = todoData.findIndex((el) => el.id === id)
-  //     const newArray = [
-  //       ...todoData.slice(0, idx),
-  //       ...todoData.slice(idx + 1)
-  //     ]
-  //     return {
-  //       todoData: newArray
-  //     }
-  //   })
-  // } 
-
-  // setNewTodo = (value) => {
-
-  //   this.setState(({todoData}) => {
-  //     const newItem = this.createTodoItem(value)
-  //     const newArray = [...todoData, newItem]
-  //     return {
-  //       todoData: newArray
-  //     }
-  //   })
-  // }
-
-  // componentDidUpdate() {
-  //   console.log(this.indexForEdit);
-  //   console.log("hi");
-  // }
-
-  // render() {
-  //   return (
-  //     <div className="App">
-  //       <AppHeader />
-  //       <ItemAddForm onClick={this.setNewTodo}/>
-  //       <TodoList todos={this.state.todoData} 
-  //                 deleteItem={this.deleteItem} 
-  //                 saveIndexForEdit={this.saveIndexForEdit}
-  //                 editable={true||false}
-  //                 className=""/>
-  //     </div>
-  //   );
-  // }
+//side naw(боковая панель), туду лист, туду-лист-айтем, хедр, апп
 }
 
 export default App;
-// .then((response) => response.json())
