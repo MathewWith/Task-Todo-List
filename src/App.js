@@ -11,20 +11,20 @@ const App = () => {
   useEffect(() => loadData(), []);
 
   const [todos, setTodos] = useState([])
+  const [itemToEdit, setItemToEdit] = useState({})
 
 
   const updateItem = async (item) => {
     try {
-      await fetch(`${URL}/${item.id}`, {
+      const updatedItem = await (await fetch(`${URL}/${item.id}`, {
         method: 'PUT',
         body: JSON.stringify(item),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      })
-      const itemToUpdate = todos.find(todo => todo.id === item.id)
-      itemToUpdate.completed = true
-      setTodos([...todos])
+      })).json()
+      const updatedTodos = [...todos.filter(todo => todo.id !== updatedItem.id)]
+      setTodos([...updatedTodos, updatedItem])
     } catch(err) {
       console.log(err);
     }
@@ -33,7 +33,11 @@ const App = () => {
   
 
   const getTodos = (isCompleted) => {
-    return todos.filter(todo => todo.completed === isCompleted)
+    return todos.filter(todo => todo.completed === isCompleted).sort((todo, nexTodo) => todo.id - nexTodo.id)
+  }
+
+  const editItem = (item) => {
+    return console.log(item)
   }
 
 
@@ -82,18 +86,25 @@ const App = () => {
 
   return (
         <div className="App">
+          {}
           <AppHeader />
-          <ItemAddForm onClick={setNewTodo} todos={todos}/>
-          <TodoList todos={getTodos(false)}
-                    deleteItem={deleteItem}
-                    updateItem={updateItem}
-                    editable={false}
-                    className="todo-list"/>
-          <TodoList todos={getTodos(true)}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
-                    editable={true}
-                    className="todo-list-done"/>
+          <ItemAddForm  setNewTodo={setNewTodo} 
+                        todos={todos} 
+                        itemToEdit={itemToEdit} updateItem={updateItem}/>
+          <div className="container">
+            <TodoList todos={getTodos(false)}
+                      deleteItem={deleteItem}
+                      updateItem={updateItem}
+                      editItem={editItem}
+                      setItemToEdit={setItemToEdit}
+                      editable={false}
+                      className="todo-list"/>
+            <TodoList todos={getTodos(true)}
+                      updateItem={updateItem}
+                      deleteItem={deleteItem}
+                      editable={true}
+                      className="todo-list-done"/>
+          </div>
         </div>
       );
 //side naw(боковая панель), туду лист, туду-лист-айтем, хедр, апп

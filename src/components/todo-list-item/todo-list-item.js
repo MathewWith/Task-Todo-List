@@ -4,14 +4,17 @@ import edit from "../../assets/image/edit.png";
 import basket from "../../assets/image/Layer.png";
 import copy from "../../assets/image/copy.png"
 
-export const TodoListItem = ({item, title, completed, deleteItem, updateItem}) => {
-    const className = "todo-list-item"
+export const TodoListItem = ({item, title, completed, deleteItem, updateItem, editItem, setItemToEdit}) => {
     return (
-        <span className={className}>
-               <span className="title">
-                   <input type="checkbox" defaultChecked={completed} onClick={() => updateItem(item)}/>
-                   {" " + title}
-                </span>
+        <span className="todo-list-item">
+            <div>
+                <input type="checkbox" 
+                            defaultChecked={completed} 
+                            onClick={() => updateItem({...item, completed: !item.completed})}/>
+                    <span className="title">
+                        {" " + title}
+                    </span>
+            </div>
             <div className="btn-grope">
                 { 
                     completed 
@@ -20,11 +23,9 @@ export const TodoListItem = ({item, title, completed, deleteItem, updateItem}) =
                                 className="image" 
                                 alt="edit" 
                                 className="btn-edit" 
-                                onClick={() => {}}/> 
+                                onClick={() => setItemToEdit(item)}/> 
                 }
 
-                <link rel="icon" type="image/gif"  href={copy}/>
-                <i className="fa fa-play"></i>
                 { completed ? null : <img src={copy} alt="copy"/> }
                 <img src={basket} alt="basket" onClick={() => deleteItem(item.id)} className="btn-delete"/>
             </div>
@@ -33,4 +34,4 @@ export const TodoListItem = ({item, title, completed, deleteItem, updateItem}) =
 }
 
 //icons , assets 
-//item, id, completed, весь объект в edit функция
+//item, id, completed, весь объект в edit функция \||| setToEdit

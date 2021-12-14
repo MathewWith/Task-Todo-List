@@ -5,6 +5,9 @@
   margin-top: 24px;
   margin-left: 64px;
   position: relative;
+  @media screen and (max-width: 500px) {
+    max-width: 78%;
+  }
   .item-add-form__input {
     width: 90%;
     height: 40px;
@@ -20,7 +23,10 @@
     color: white;
     font-size: 18px;
     margin-left: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
+    @media screen and (max-width: 500px) {
+      width: 20%;
+    }
   }
   .todo-total-on-list {
     font-size: 15px;

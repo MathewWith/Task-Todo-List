@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-export const ItemAddForm = ({todos, onClick}) => {
-    const [label, setLabel] = useState("")
+export const ItemAddForm = ({todos, setNewTodo, itemToEdit, updateItem}) => {
+    const [value, setValue] = useState("")
+
+    useEffect( () => setValue(itemToEdit.title), [itemToEdit] );
 
     const todoTotalOnList = (todos) => {
         return todos.length
@@ -9,8 +11,8 @@ export const ItemAddForm = ({todos, onClick}) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await onClick(label)
-        setLabel('')
+        itemToEdit?.id ? await updateItem({...itemToEdit, title: value}) : await setNewTodo(value) 
+        setValue('')
     }
     
         return (
@@ -20,10 +22,10 @@ export const ItemAddForm = ({todos, onClick}) => {
                     type="text"
                     className="item-add-form__input"  
                     placeholder="+ Add a task, press Enter to save"
-                    value={label}
-                    onChange={(e) => setLabel(e.target.value)}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
                     />
-                <button className="btn-input">Add</button>
+                <button className="btn-input">{itemToEdit?.id ? "Save" : "Add" }</button>
                 <span className="todo-total-on-list">Total: {todoTotalOnList(todos)}</span>
             </form>
         )
