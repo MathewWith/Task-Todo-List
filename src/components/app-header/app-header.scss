@@ -5,12 +5,12 @@
   height: 60px;
   box-shadow: 1px 0px 5px;
   position: relative;
-  .app-header__top-wrapper {
+  .app-header__wrapper {
     width: 97%;
     display: flex;
     justify-content: space-between;
   }
-  .app-header__left {
+  .app-header__wrapper-left {
     display: flex;
     align-items: center;
     margin-left: 8px;
@@ -20,7 +20,7 @@
     font-size: 22px;
     font-weight: 700;
   }
-  .app-header__right {
+  .app-header__wrapper-right {
     display: flex;
     align-items: center;
     img {
@@ -29,7 +29,6 @@
   }
   .icon-left {
     color: #550dc9;
-    // font-size: 26px;
     width: 20px;
     height: 25px;
     display: flex;
@@ -38,24 +37,11 @@
     margin: 0px 10px;
   }
   .sign {
+    display: flex;
+    justify-content: center;
     color: black;
     font-size: 9px;
     font-weight: bold;
-  }
-  .side-naw {
-    width: 52px;
-    background-color: #550dc9;
-    position: absolute;
-    height: 6700px;
-    bottom: -6700px;
-  }
-  .wrapper-vector {
-    margin-top: 24px;
-    height: 32px;
-    background-color: #440ba0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .vector {
     height: 17px;

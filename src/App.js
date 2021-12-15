@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import './App.scss';
 import AppHeader from './components/app-header';
 import ItemAddForm from './components/item-add-form';
+import SideNaw from './components/side-naw';
 import TodoList from './components/todo-list';
 import {URL} from './shared/const';
 
@@ -88,6 +89,7 @@ const App = () => {
         <div className="App">
           {}
           <AppHeader />
+          <SideNaw />
           <ItemAddForm  setNewTodo={setNewTodo} 
                         todos={todos} 
                         itemToEdit={itemToEdit} updateItem={updateItem}/>
@@ -107,7 +109,6 @@ const App = () => {
           </div>
         </div>
       );
-//side naw(боковая панель), туду лист, туду-лист-айтем, хедр, апп
 }
 
 export default App;

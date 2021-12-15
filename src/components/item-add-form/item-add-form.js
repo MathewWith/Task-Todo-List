@@ -26,7 +26,7 @@ export const ItemAddForm = ({todos, setNewTodo, itemToEdit, updateItem}) => {
                     onChange={(e) => setValue(e.target.value)}
                     />
                 <button className="btn-input">{itemToEdit?.id ? "Save" : "Add" }</button>
-                <span className="todo-total-on-list">Total: {todoTotalOnList(todos)}</span>
+                <span className="todo-total">Total: {todoTotalOnList(todos)}</span>
             </form>
         )
 }

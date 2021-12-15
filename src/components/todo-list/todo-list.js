@@ -3,6 +3,7 @@ import TodoListItem from "../todo-list-item";
 
 export const TodoList = ({todos, editable, deleteItem, updateItem, editItem, setItemToEdit}) => {
 
+    const classesWrap = editable ? "list-wrapper-done" : "list-wrapper";
     const classes = editable ? "todo-list-done" : "todo-list";
    
     const element = todos.map((item) => {
@@ -22,14 +23,17 @@ export const TodoList = ({todos, editable, deleteItem, updateItem, editItem, set
     })
 
     return (
-            <ul className={classes}>
-                { editable 
+        <div className={classesWrap}>
+            { editable 
                     ? <span className="todo-total">Completed({todos.length})</span>
                     : <span className="todo-total">To do({todos.length})</span>
-                }
+            }
+            <ul className={classes}>
+            
                 {
                 element
                 }
             </ul>
+        </div>
     )
 }

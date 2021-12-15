@@ -11,11 +11,11 @@ export const TodoListItem = ({item, title, completed, deleteItem, updateItem, ed
                 <input type="checkbox" 
                             defaultChecked={completed} 
                             onClick={() => updateItem({...item, completed: !item.completed})}/>
-                    <span className="title">
+                    <span className="todo-list-item__title">
                         {" " + title}
                     </span>
             </div>
-            <div className="btn-grope">
+            <div className="todo-list-item__btn-grope">
                 { 
                     completed 
                         ? null 

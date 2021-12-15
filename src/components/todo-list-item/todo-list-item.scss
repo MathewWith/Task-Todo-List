@@ -11,7 +11,7 @@
   .title:first-letter {
     text-transform: capitalize;
   }
-  .btn-grope {
+  .todo-list-item__btn-grope {
     display: flex;
     align-items: center;
   }
@@ -28,7 +28,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .title {
+  .todo-list-item__title {
     margin-left: 8px;
     font-family: Open Sans;
     font-size: 14px;
@@ -36,7 +36,7 @@
 }
 
 @media only screen and (min-width: 524px) {
-  .title {
+  .todo-list-item__title {
     margin-left: 8px;
     font-family: Open Sans;
     font-size: 20px;
